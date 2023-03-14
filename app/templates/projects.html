@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+		<div class="row">
+			<div class="col">
+				<nav aria-label="Projects navigation">
+				  <ul class="pagination justify-content-center">
+				    <li class="page-item {% if pag==1 %}active{% endif %}"><a class="page-link" href="./projects?page=1">DESIGN</a></li>
+				    <li class="page-item {% if pag==2 %}active{% endif %}"><a class="page-link" href="./projects?page=2">PYTHON</a></li>
+				  </ul>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			{% for project in projects[pag-1] %}
+			<div class="col">
+				<div class="card" style="width: 18rem;">
+				  <img src="/static/img/{{project.split('/')[1]}}" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <h5 class="card-title">{{project.split('/')[0]}}</h5>
+				    <a href="#" class="btn btn-primary">круто</a>
+				  </div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+   </div>
+{% endblock %}
